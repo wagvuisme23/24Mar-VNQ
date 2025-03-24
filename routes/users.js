@@ -42,7 +42,9 @@ router.post('/',
         body.username,
         body.password,
         body.email,
-        body.role
+        body.role,
+        body.fullName, // Thêm fullName
+        body.imgURL   // Thêm imgURL
       )
       res.status(200).send({
         success: true,
@@ -63,7 +65,7 @@ router.put('/:id', async function (req, res, next) {
       path: "role", select: "roleName"
     });
     if (user) {
-      let allowField = ["password", "email", "fullName", "avatarUrl"];
+      let allowField = ["password", "email", "fullName", "imgURL"];
       for (const key of Object.keys(body)) {
         if (allowField.includes(key)) {
           user[key] = body[key]

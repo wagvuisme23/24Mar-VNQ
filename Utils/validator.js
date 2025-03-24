@@ -25,7 +25,12 @@ module.exports = {
                 config.password_config.minNumbers,
             )),
         body('username').isAlphanumeric().withMessage('username chi dc chu va so'),
-        body('role').isIn(constants.USER_PERMISSION).withMessage('role khong hop le')
+        body('role').isIn(constants.USER_PERMISSION).withMessage('role khong hop le'),
+        // Thêm 2 validator mới
+        body('fullName').isAlpha('en-US', {ignore: ' '})
+            .withMessage('Fullname chi duoc chua chu cai'),
+        body('imgURL').isURL()
+            .withMessage('imgURL phai la mot URL hop le')
     ],
     validator_middleware: function (req, res, next) {
         let errors = validationResult(req);
