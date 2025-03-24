@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true},
     email: { type: String, unique: true, required: true},
     fullName: { type: String, default: '' },
-    avatarUrl: { type: String, default: '' },
+    imgURL: { type: String, default: '' }, // Thay avatarUrl thành imgURL
     status: { type: Boolean, default: false },
     loginCount: { type: Number, default: 0, min: 0 },
     role:{
